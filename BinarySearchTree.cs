@@ -23,7 +23,7 @@ namespace BST
     {
 
         Node<T> root;
-
+        int Length = 0;
 
         public void Insert(Node<T> node, T itemType)
         {
@@ -41,6 +41,7 @@ namespace BST
                     if (node.Left == null)
                     {
                         node.Left = new Node<T>(itemType);
+                        Length++;
                     }
                     else
                     {
@@ -53,6 +54,7 @@ namespace BST
                     if (node.Right == null)
                     {
                         node.Right = new Node<T>(itemType);
+                        Length++;
                     }
                     else
                     {
@@ -63,6 +65,39 @@ namespace BST
 
             }
 
+        }
+
+        public void Delete(){
+
+        }
+        public void DeleteItem(){
+
+        }
+
+        public void DeleteNode(Node<T> node, Node<T> parent){
+            if(node.Left == null && node.Right == null){//no childern
+                if(root == node){//is the root
+                    root = null;
+                }else if(parent.Right == node){
+                    parent.Right = null;
+                }else if(parent.Left == node){
+                    parent.Left = null;
+                }  
+            }else if(node.Right == null){//only has a node on the left
+                if(parent.Left == node){
+                    parent.Left = node.Left;
+                }else{
+                    parent.Right = node.Left;
+                }
+            }else if(node.Left == null){//only has a node on the right
+                if(parent.Right == node){
+                    parent.Right = node.Right;
+                }else{
+                    parent.Left = node.Right;
+                }
+            }else{
+
+            }
         }
 
         public void printT()
@@ -114,9 +149,35 @@ namespace BST
             }
 
         }
-        public void Add(T input)
-        {
+        
+        public T Max(){
 
+            return GetMostLeft(this.root).Value;
+        }
+
+        public T Min(){
+            return GetMostRight(this.root).Value;
+        }
+
+        public Node<T> GetMostLeft(Node<T> node){
+            if(node.Left == null){
+                return node;
+            }else{
+                return GetMostLeft(node.Left);
+            }
+        }
+
+        public Node<T> GetMostRight(Node<T> node){
+            if(node.Right == null){
+                return node;
+            }else{
+                return GetMostRight(node.Right);
+            }
+        }
+
+        public void MakeEmpty(){
+            this.root = null;
+            this.Length = 0;
         }
     }
 }
