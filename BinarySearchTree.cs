@@ -179,5 +179,24 @@ namespace BST
             this.root = null;
             this.Length = 0;
         }
+    
+        public int TotalLevels(){
+            return GetLevel(this.root);
+        }
+
+        private int GetLevel(Node<T> node){
+            if(node == null){
+                return 0;
+            }else{
+                int leftLevel = GetLevel(node.Left);
+                int rightLevel = GetLevel(node.Right);
+                if(leftLevel > rightLevel){
+                    return leftLevel +1;
+                }else{
+                    return rightLevel +1;
+                }
+            }
+        }
+
     }
 }
