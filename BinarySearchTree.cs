@@ -67,11 +67,11 @@ namespace BST
 
         }
 
-        public void Delete(){
+        public void Delete(Node<T> node, Node<T> parent, T data){
 
         }
-        public void DeleteItem(){
-
+        public void DeleteItem(T data){
+            Delete(this.root,null, data);
         }
 
         public void DeleteNode(Node<T> node, Node<T> parent){
