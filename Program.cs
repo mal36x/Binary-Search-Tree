@@ -247,7 +247,7 @@ namespace BST
                         }
                         catch
                         {
-                            output2 += "Failed"
+                            output2 += "Failed";
                            Console.WriteLine(output2);
                         }
 
@@ -270,7 +270,12 @@ namespace BST
                         output4 = "TotalLevels() -- ";
                         try
                         {
-                            output4 += tree.totalLevels();
+                            if(data == "int"){
+                                output4 += treeInt.TotalLevels();
+                            }else{
+                                output4 += treeItem.TotalLevels();
+                            }
+                            
                             Console.WriteLine(output4);
                         }
                         catch
@@ -286,12 +291,12 @@ namespace BST
                         {
                             if (data == "int")
                             {
-                                output5 += tree.level(inputs[1]);
+                                output5 += treeInt.Level(inputs[1]);
                             }
                             else
                             {
-                                item = new Item(parseInt(inputs[1]), "", -1)
-                               output5 += tree.level(item);
+                                Item item = new Item(Convert.ToInt32(inputs[1]), "", -1);
+                               output5 += treeItem.Level(item);
                             }
                         }
                         catch
