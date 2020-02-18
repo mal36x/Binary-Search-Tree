@@ -9,8 +9,9 @@ namespace BST
 
 
             string[] files = System.IO.File.ReadAllLines(@"C:\Users\Malcolm\testprojects\p03input2.txt");
-            string data;
-            Node<string> tree = null;
+            string data = null;
+            Tree<int> treeInt = null;
+            Tree<Item> treeItem = null;
             foreach (string lines in files)
             {
 
@@ -41,7 +42,12 @@ namespace BST
 
                         try
                         {
-                            tree = new Node<string>(data);
+                            if(data == "int"){
+                                treeInt = new Tree<int>();
+                            }else{
+                                treeItem = new Tree<Item>();
+                            }
+                            
                         }
                         catch
                         {
@@ -52,32 +58,39 @@ namespace BST
 
                     case "d":
                         Console.Write("Destructor()-- BSTree" + data + ">");
-                        tree = null;
+                        treeInt = null;
+                        treeItem = null;
                         break;
 
                     case "!":
                         try
                         {
                             Console.Write("*** Start Copy Constructor Test***");
-                            Node<string> emptyTree = new Node<string>(tree);
                             Console.Write("Print Copy without new value");
-                            emptyTree.printT();
 
                             if (data == "int")
                             {
+                                Tree <int> emptyTree = new Tree<int>(treeInt);
+                                emptyTree.printT();
+                                
                                 emptyTree.Insert(tree, inputs[1]);
-
+                                Console.Write("Print Copy plus new value");
+                                emptyTree.printT();
+                                Console.Write("Print Original without new value");
+                                treeInt.printT();
 
                             }
                             else
                             {
-                                newItems = new item  ///dont know what this is
-                                emptyTree.Insert(newItems);
+                                Tree <Item> emptyTree = new Tree<Item>(treeItem);
+                                Item newItems = new Item();
+                                emptyTree.InsertItem(newItems);
+                                Console.Write("Print Copy plus new value");
+                                emptyTree.printT();
+                                Console.Write("Print Original without new value");
+                                treeItem.printT();
                             }
-                            Console.Write("Print Copy plus new value");
-                            emptyTree.printT();
-                            Console.Write("Print Original without new value");
-                            tree.printT();
+                            
                             Console.WriteLine("CopyConstructor -- successful");
 
 
@@ -141,7 +154,6 @@ namespace BST
                             else
                             {
                                  newItems = new Item(******);
-                               // addOutput += JSON.stringify(newItems) + ")";
                                 tree.insertItem(newItems);
 
                                 Console.WriteLine(addOutput)
@@ -149,13 +161,13 @@ namespace BST
                         }
                         catch
                         {
-                            addOutput += "-- Failed"
+                            addOutput += "-- Failed";
                            Console.WriteLine(addOutput);
 
                         }
                         break;
                     case "-":
-                        output = "DeleteItem(" + inputs[1] + ")"
+                        output = "DeleteItem(" + inputs[1] + ")";
                     try
                         {
 
@@ -182,13 +194,27 @@ namespace BST
 
                         break;
                     case "p":
-                        tree.print();
+                        if(data == "int"){
+                            treeInt.printT();
+                        }else{
+                            treeItem.printT();
+                        }
+                        
                         break;
                     case "s":
-                        Console.WriteLine("Size() -- " + tree.size);
+                        if(data == "int"){
+                            Console.WriteLine("Size() -- " + treeInt.Length);
+                        }else{
+                            Console.WriteLine("Size() -- " + treeItem.Length);
+                        }
+                        
                         break;
                     case "m":
-                        tree.makeEmpty();
+                        if(data == "int"){
+                            treeInt.MakeEmpty();
+                        }else{
+                            treeItem.MakeEmpty();
+                        }
                         break;
                     case "<":
                         output2 = "Min() -- ";

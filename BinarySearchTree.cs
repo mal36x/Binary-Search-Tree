@@ -23,7 +23,16 @@ namespace BST
     {
 
         Node<T> root;
-        int Length = 0;
+        public int Length = 0;
+
+
+        public Tree(){
+
+        }
+
+        public Tree(Tree<T> tree){
+
+        }
 
         public void Insert(Node<T> node, T itemType)
         {
@@ -65,6 +74,10 @@ namespace BST
 
             }
 
+        }
+
+        public void InsertItem(T item){
+            Insert(this.root, item);
         }
 
         public void Delete(Node<T> node, Node<T> parent, T data){
