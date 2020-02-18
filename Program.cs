@@ -73,7 +73,7 @@ namespace BST
                                 Tree <int> emptyTree = new Tree<int>(treeInt);
                                 emptyTree.printT();
                                 
-                                emptyTree.Insert(tree, inputs[1]);
+                                emptyTree.InsertItem(Convert.ToInt32( inputs[1]));
                                 Console.Write("Print Copy plus new value");
                                 emptyTree.printT();
                                 Console.Write("Print Original without new value");
@@ -83,7 +83,7 @@ namespace BST
                             else
                             {
                                 Tree <Item> emptyTree = new Tree<Item>(treeItem);
-                                Item newItems = new Item();
+                                Item newItems = new Item(Convert.ToInt32( inputs[1]), inputs[2], Convert.ToDouble(inputs[3]));
                                 emptyTree.InsertItem(newItems);
                                 Console.Write("Print Copy plus new value");
                                 emptyTree.printT();
@@ -108,28 +108,37 @@ namespace BST
 
                         try
                         {
-                            Console.Write("*** Start Copy Operator = Test ***");
-                            Node<string> emptyTree = new Node<string>(tree);
-                            Console.Write("Print Copy without new Value");
-                            emptyTree.printT();
+                            
                             if (data == "int")
                             {
-                                emptyTree.Insert(inputs[1]);
+                                Console.Write("*** Start Copy Operator = Test ***");
+                                Tree<int> emptyTree = new Tree<int>(treeInt) ;
+                                Console.Write("Print Copy without new Value");
+                                emptyTree.printT();
+                                emptyTree.InsertItem(Convert.ToInt32(inputs[1]));
+
+                                Console.WriteLine("Print Copy plus new value");
+                                emptyTree.printT();
+                                Console.WriteLine("Print Original without new value");
+                                treeInt.printT();
 
                             }
                             else
                             {
-                                newItems = new item  //stuff ...........i dont know what you did
-                                emptyTree.insertItem(******);
-                            } else
-                            {
-                                 newItems = new Item(******);
-                                emptyTree.insertItem(newItems);
-                            }
-                            Console.WriteLine("Print Copy plus new value");
-                            emptyTree.print();
-                            Console.WriteLine("Print Original without new value");
-                            tree.print();
+                                Console.Write("*** Start Copy Operator = Test ***");
+                                Tree<Item> emptyTree = new Tree<Item>(treeItem) ;
+                                Console.Write("Print Copy without new Value");
+                                emptyTree.printT();
+                                Item newItem = new Item(Convert.ToInt32( inputs[1]), inputs[2], Convert.ToDouble(inputs[3]));
+
+                                emptyTree.InsertItem(newItem);
+                                Console.WriteLine("Print Copy plus new value");
+                                emptyTree.printT();
+                                Console.WriteLine("Print Original without new value");
+                                treeItem.printT();
+                            } 
+
+                            
                             Console.WriteLine("Operator= -- successful");
                         }
                         catch
@@ -173,7 +182,7 @@ namespace BST
 
                             if (data == "int")
                             {
-                                tree.deleteItem(*****);
+                                treeInt.DeleteItem(Convert.ToInt32(inputs[1]));
                                 output += "Deleted " + inputs[1];
                             }
                             else
@@ -277,6 +286,7 @@ namespace BST
                             output5 += "Failed";
                         }
                         Console.WriteLine(output5);
+                        break;
                     case "^":
                          output6 = "Parent('" + inputs[1] + "') -- ";
                         try
@@ -296,6 +306,7 @@ namespace BST
                             output6 += "Failed";
                         }
                         Console.WriteLine(output6);
+                        break;
 
                 }
             }
