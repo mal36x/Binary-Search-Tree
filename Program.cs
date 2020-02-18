@@ -42,12 +42,15 @@ namespace BST
 
                         try
                         {
-                            if(data == "int"){
+                            if (data == "int")
+                            {
                                 treeInt = new Tree<int>();
-                            }else{
+                            }
+                            else
+                            {
                                 treeItem = new Tree<Item>();
                             }
-                            
+
                         }
                         catch
                         {
@@ -70,10 +73,10 @@ namespace BST
 
                             if (data == "int")
                             {
-                                Tree <int> emptyTree = new Tree<int>(treeInt);
+                                Tree<int> emptyTree = new Tree<int>(treeInt);
                                 emptyTree.printT();
-                                
-                                emptyTree.InsertItem(Convert.ToInt32( inputs[1]));
+
+                                emptyTree.InsertItem(Convert.ToInt32(inputs[1]));
                                 Console.Write("Print Copy plus new value");
                                 emptyTree.printT();
                                 Console.Write("Print Original without new value");
@@ -82,15 +85,15 @@ namespace BST
                             }
                             else
                             {
-                                Tree <Item> emptyTree = new Tree<Item>(treeItem);
-                                Item newItems = new Item(Convert.ToInt32( inputs[1]), inputs[2], Convert.ToDouble(inputs[3]));
+                                Tree<Item> emptyTree = new Tree<Item>(treeItem);
+                                Item newItems = new Item(Convert.ToInt32(inputs[1]), inputs[2], Convert.ToDouble(inputs[3]));
                                 emptyTree.InsertItem(newItems);
                                 Console.Write("Print Copy plus new value");
                                 emptyTree.printT();
                                 Console.Write("Print Original without new value");
                                 treeItem.printT();
                             }
-                            
+
                             Console.WriteLine("CopyConstructor -- successful");
 
 
@@ -108,11 +111,11 @@ namespace BST
 
                         try
                         {
-                            
+
                             if (data == "int")
                             {
                                 Console.Write("*** Start Copy Operator = Test ***");
-                                Tree<int> emptyTree = new Tree<int>(treeInt) ;
+                                Tree<int> emptyTree = new Tree<int>(treeInt);
                                 Console.Write("Print Copy without new Value");
                                 emptyTree.printT();
                                 emptyTree.InsertItem(Convert.ToInt32(inputs[1]));
@@ -126,58 +129,59 @@ namespace BST
                             else
                             {
                                 Console.Write("*** Start Copy Operator = Test ***");
-                                Tree<Item> emptyTree = new Tree<Item>(treeItem) ;
+                                Tree<Item> emptyTree = new Tree<Item>(treeItem);
                                 Console.Write("Print Copy without new Value");
                                 emptyTree.printT();
-                                Item newItem = new Item(Convert.ToInt32( inputs[1]), inputs[2], Convert.ToDouble(inputs[3]));
+                                Item newItem = new Item(Convert.ToInt32(inputs[1]), inputs[2], Convert.ToDouble(inputs[3]));
 
                                 emptyTree.InsertItem(newItem);
                                 Console.WriteLine("Print Copy plus new value");
                                 emptyTree.printT();
                                 Console.WriteLine("Print Original without new value");
                                 treeItem.printT();
-                            } 
+                            }
 
-                            
+
                             Console.WriteLine("Operator= -- successful");
                         }
                         catch
                         {
                             Console.WriteLine("Operator= -- Failed: assignment operator");
-                      }
+                        }
                         Console.WriteLine("*** End Operator= Test ***");
-                    break;
+                        break;
 
                     case "+":
-                         addOutput = "InsertItem(";
+                        addOutput = "InsertItem(";
                         try
                         {
                             if (data == "int")
                             {
                                 addOutput += inputs[1] + ")";
-                                tree.insertItem(parseInt(inputs[1]));
+                                treeInt.InsertItem(Convert.ToInt32(inputs[1]));
 
                                 Console.WriteLine(addOutput)
-    
-                        }
+
+
+                            }
                             else
                             {
-                                 newItems = new Item(******);
-                                tree.insertItem(newItems);
+                                Item newItem = new Item(Convert.ToInt32(inputs[1]), inputs[2], Convert.ToDouble(inputs[3]));
+                                treeItem.InsertItem(newItem);
 
                                 Console.WriteLine(addOutput)
-                           }
+                            }
                         }
                         catch
                         {
                             addOutput += "-- Failed";
-                           Console.WriteLine(addOutput);
+                            Console.WriteLine(addOutput);
 
                         }
                         break;
                     case "-":
                         output = "DeleteItem(" + inputs[1] + ")";
-                    try
+                        try
                         {
 
                             if (data == "int")
@@ -187,8 +191,8 @@ namespace BST
                             }
                             else
                             {
-                                let item = new Item(parseInt(inputs[1]), "", -1);
-                                tree.deleteItem(item);
+                                Item item = new Item(Convert.ToInt32(inputs[1]), "", -1);
+                                treeItem.DeleteItem(item);
                                 output += "Deleted " + inputs[1];
 
                             }
@@ -203,25 +207,34 @@ namespace BST
 
                         break;
                     case "p":
-                        if(data == "int"){
+                        if (data == "int")
+                        {
                             treeInt.printT();
-                        }else{
+                        }
+                        else
+                        {
                             treeItem.printT();
                         }
-                        
+
                         break;
                     case "s":
-                        if(data == "int"){
+                        if (data == "int")
+                        {
                             Console.WriteLine("Size() -- " + treeInt.Length);
-                        }else{
+                        }
+                        else
+                        {
                             Console.WriteLine("Size() -- " + treeItem.Length);
                         }
-                        
+
                         break;
                     case "m":
-                        if(data == "int"){
+                        if (data == "int")
+                        {
                             treeInt.MakeEmpty();
-                        }else{
+                        }
+                        else
+                        {
                             treeItem.MakeEmpty();
                         }
                         break;
@@ -240,10 +253,10 @@ namespace BST
 
                         break;
                     case ">":
-                         output3 = "Max() -- ";
+                        output3 = "Max() -- ";
                         try
                         {
-                           // output3 += JSON.stringify(tree.max());
+                            // output3 += JSON.stringify(tree.max());
                             Console.WriteLine(output3);
                         }
                         catch
@@ -254,7 +267,7 @@ namespace BST
 
                         break;
                     case "l":
-                         output4 = "TotalLevels() -- ";
+                        output4 = "TotalLevels() -- ";
                         try
                         {
                             output4 += tree.totalLevels();
@@ -268,7 +281,7 @@ namespace BST
 
                         break;
                     case "?":
-                         output5 = "Level('" + inputs[1] + "') -- ";
+                        output5 = "Level('" + inputs[1] + "') -- ";
                         try
                         {
                             if (data == "int")
@@ -277,7 +290,7 @@ namespace BST
                             }
                             else
                             {
-                                 item = new Item(parseInt(inputs[1]), "", -1)
+                                item = new Item(parseInt(inputs[1]), "", -1)
                                output5 += tree.level(item);
                             }
                         }
@@ -288,17 +301,17 @@ namespace BST
                         Console.WriteLine(output5);
                         break;
                     case "^":
-                         output6 = "Parent('" + inputs[1] + "') -- ";
+                        output6 = "Parent('" + inputs[1] + "') -- ";
                         try
                         {
                             if (data == "int")
                             {
-                               // output6 += tree.parent(parseInt(inputs[1]));
+                                // output6 += tree.parent(parseInt(inputs[1]));
                             }
                             else
                             {
                                 //item = new Item(parseInt(inputs[1]), "", -1)
-                               output6 += tree.parent(item);
+                                output6 += tree.parent(item);
                             }
                         }
                         catch
