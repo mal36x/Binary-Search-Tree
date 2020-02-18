@@ -239,30 +239,40 @@ namespace BST
                         }
                         break;
                     case "<":
-                        output2 = "Min() -- ";
+                        Console.Write("Min() -- ");
                         try
                         {
-                            //output2 += JSON.stringify(tree.min());
-                            Console.WriteLine(output2);
+                            if (data == "int")
+                            {
+                                Console.WriteLine(treeInt.Min());
+                            }
+                            else
+                            {
+                                Console.WriteLine(treeItem.Min());
+                            }
                         }
                         catch
                         {
-                            output2 += "Failed";
-                           Console.WriteLine(output2);
+                            Console.WriteLine("Failed");
                         }
 
                         break;
                     case ">":
-                        output3 = "Max() -- ";
+                        Console.Write("Max() -- ");
                         try
                         {
-                            // output3 += JSON.stringify(tree.max());
-                            Console.WriteLine(output3);
+                            if (data == "int")
+                            {
+                                Console.WriteLine(treeInt.Max());
+                            }
+                            else
+                            {
+                                Console.WriteLine(treeItem.Max());
+                            }
                         }
                         catch
                         {
-                            output3 += "Failed";
-                            Console.WriteLine(output3);
+                            Console.WriteLine("Failed");
                         }
 
                         break;
@@ -270,12 +280,15 @@ namespace BST
                         output4 = "TotalLevels() -- ";
                         try
                         {
-                            if(data == "int"){
+                            if (data == "int")
+                            {
                                 output4 += treeInt.TotalLevels();
-                            }else{
+                            }
+                            else
+                            {
                                 output4 += treeItem.TotalLevels();
                             }
-                            
+
                             Console.WriteLine(output4);
                         }
                         catch
@@ -296,7 +309,7 @@ namespace BST
                             else
                             {
                                 Item item = new Item(Convert.ToInt32(inputs[1]), "", -1);
-                               output5 += treeItem.Level(item);
+                                output5 += treeItem.Level(item);
                             }
                         }
                         catch
