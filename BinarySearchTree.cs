@@ -155,7 +155,55 @@ namespace BST
 
         public void Delete(Node<T> node, Node<T> parent, T data)
         {
-
+            if(node.Value is int){
+                int dataValue = Convert.ToInt32(data);
+                int nodeValue = Convert.ToInt32(node.Value);
+                if(nodeValue == dataValue){
+                    DeleteNode(node,parent);
+                }
+                if(node.Left !=null){
+                    int leftData = Convert.ToInt32(node.Left.Value);
+                    if(dataValue < leftData){
+                        Delete(node.Left, node, data);
+                    }
+                    if(dataValue == leftData){
+                        DeleteNode(node.Left,node);
+                    }
+                }
+                if(node.Right !=null){
+                    int rightData = Convert.ToInt32(node.Right.Value);
+                    if(dataValue > rightData){
+                        Delete(node.Right, node, data);
+                    }
+                    if(dataValue == rightData){
+                        DeleteNode(node.Left,node);
+                    }
+                }
+            }else{
+                Item dataValue =data  as Item;
+                Item nodeValue =node.Value as Item;
+                if(nodeValue == dataValue){
+                    DeleteNode(node,parent);
+                }
+                if(node.Left !=null){
+                    Item leftData = node.Left.Value as Item;
+                    if(dataValue.ItemId < leftData.ItemId){
+                        Delete(node.Left, node, data);
+                    }
+                    if(dataValue.ItemId == leftData.ItemId){
+                        DeleteNode(node.Left,node);
+                    }
+                }
+                if(node.Right !=null){
+                    Item rightData = node.Right.Value as Item;
+                    if(dataValue.ItemId > rightData.ItemId){
+                        Delete(node.Right, node, data);
+                    }
+                    if(dataValue.ItemId == rightData.ItemId){
+                        DeleteNode(node.Left,node);
+                    }
+                }
+            }
         }
         public void DeleteItem(T data)
         {
@@ -221,7 +269,7 @@ namespace BST
 
             foreach (T Value in inorder)
             {
-                Console.Write(Value);
+                Console.Write(" "+ Value);
             }
 
             Console.WriteLine(" }");
@@ -230,7 +278,7 @@ namespace BST
 
             foreach (T Value in preorder)
             {
-                Console.Write(Value);
+                Console.Write( " " + Value);
             }
 
             Console.WriteLine(" }");
@@ -239,7 +287,7 @@ namespace BST
 
             foreach (T Value in postorder)
             {
-                Console.Write(Value);
+                Console.Write(" "+ Value);
             }
 
             Console.WriteLine(" }");

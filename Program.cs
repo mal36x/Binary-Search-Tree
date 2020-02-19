@@ -8,7 +8,7 @@ namespace BST
         {
 
 
-            string[] files = System.IO.File.ReadAllLines(@"data\p03input2.txt");
+            string[] files = System.IO.File.ReadAllLines(@"data\p03input1.txt");
             string data = null;
             Tree<int> treeInt = null;
             Tree<Item> treeItem = null;
