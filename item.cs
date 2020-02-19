@@ -15,5 +15,9 @@ namespace BST
             return "[ " + ItemId + " " + Name +" " + Price +"]";
         }
 
+        public Item Clone(){
+            return new Item(ItemId, Name, Price);
+        }
+
     }
 }

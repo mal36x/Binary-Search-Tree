@@ -8,7 +8,7 @@ namespace BST
         {
 
 
-            string[] files = System.IO.File.ReadAllLines(@"C:\Users\Malcolm\testprojects\p03input2.txt");
+            string[] files = System.IO.File.ReadAllLines(@"data\p03input2.txt");
             string data = null;
             Tree<int> treeInt = null;
             Tree<Item> treeItem = null;
@@ -27,6 +27,9 @@ namespace BST
                         i--;
 
                     }
+                }
+                if(inputs.Count ==0){
+                    continue;
                 }
 
                 switch (inputs[0])
@@ -60,7 +63,7 @@ namespace BST
                         break;
 
                     case "d":
-                        Console.Write("Destructor()-- BSTree" + data + ">");
+                        Console.WriteLine("Destructor()-- BSTree" + data + ">");
                         treeInt = null;
                         treeItem = null;
                         break;
