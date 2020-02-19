@@ -152,56 +152,49 @@ namespace BST
                         break;
 
                     case "+":
-                        addOutput = "InsertItem(";
+                        Console.Write("InsertItem(");
                         try
                         {
                             if (data == "int")
                             {
-                                addOutput += inputs[1] + ")";
+                                Console.WriteLine( inputs[1] + ")");
                                 treeInt.InsertItem(Convert.ToInt32(inputs[1]));
-
-                                Console.WriteLine(addOutput)
-
 
                             }
                             else
                             {
                                 Item newItem = new Item(Convert.ToInt32(inputs[1]), inputs[2], Convert.ToDouble(inputs[3]));
                                 treeItem.InsertItem(newItem);
-
-                                Console.WriteLine(addOutput)
+                                Console.WriteLine(newItem);
                             }
                         }
                         catch
                         {
-                            addOutput += "-- Failed";
-                            Console.WriteLine(addOutput);
 
                         }
                         break;
                     case "-":
-                        output = "DeleteItem(" + inputs[1] + ")";
+                        Console.Write("DeleteItem(" + inputs[1] + ")");
                         try
                         {
 
                             if (data == "int")
                             {
                                 treeInt.DeleteItem(Convert.ToInt32(inputs[1]));
-                                output += "Deleted " + inputs[1];
+                                Console.WriteLine( "Deleted " + inputs[1]);
                             }
                             else
                             {
                                 Item item = new Item(Convert.ToInt32(inputs[1]), "", -1);
                                 treeItem.DeleteItem(item);
-                                output += "Deleted " + inputs[1];
+                                Console.WriteLine("Deleted " + inputs[1]);
 
                             }
-                            Console.WriteLine(output);
                         }
                         catch
                         {
-                            output += "-- Failed to delete";
-                            Console.WriteLine(output);
+                            Console.WriteLine( "-- Failed to delete");
+                            
                         }
 
 
@@ -277,66 +270,63 @@ namespace BST
 
                         break;
                     case "l":
-                        output4 = "TotalLevels() -- ";
+                        Console.Write("TotalLevels() -- ");
                         try
                         {
                             if (data == "int")
                             {
-                                output4 += treeInt.TotalLevels();
+                                Console.WriteLine(treeInt.TotalLevels());
                             }
                             else
                             {
-                                output4 += treeItem.TotalLevels();
+                                Console.WriteLine(treeItem.TotalLevels());
                             }
 
-                            Console.WriteLine(output4);
                         }
                         catch
                         {
-                            output4 += "Failed";
-                            Console.WriteLine(output4);
+                            Console.WriteLine("Failed");
                         }
 
                         break;
                     case "?":
-                        output5 = "Level('" + inputs[1] + "') -- ";
+                        Console.Write("Level('" + inputs[1] + "') -- ");
                         try
                         {
                             if (data == "int")
                             {
-                                output5 += treeInt.Level(inputs[1]);
+                                Console.WriteLine(treeInt.Level(Convert.ToInt32(inputs[1])));
                             }
                             else
                             {
                                 Item item = new Item(Convert.ToInt32(inputs[1]), "", -1);
-                                output5 += treeItem.Level(item);
+                                Console.WriteLine(treeItem.Level(item));
+
                             }
                         }
                         catch
                         {
-                            output5 += "Failed";
+                            Console.WriteLine( "Failed");
                         }
-                        Console.WriteLine(output5);
                         break;
                     case "^":
-                        output6 = "Parent('" + inputs[1] + "') -- ";
+                        Console.Write("Parent('" + inputs[1] + "') -- ");
                         try
                         {
                             if (data == "int")
                             {
-                                // output6 += tree.parent(parseInt(inputs[1]));
+                                Console.WriteLine(treeInt.Parent(Convert.ToInt32(inputs[1])));
                             }
                             else
                             {
-                                //item = new Item(parseInt(inputs[1]), "", -1)
-                                output6 += tree.parent(item);
+                                Item item = new Item(Convert.ToInt32(inputs[1]), "", -1);
+                                Console.WriteLine(treeItem.Parent(item));
                             }
                         }
                         catch
                         {
-                            output6 += "Failed";
+                            Console.WriteLine("Failed");
                         }
-                        Console.WriteLine(output6);
                         break;
 
                 }
@@ -348,7 +338,4 @@ namespace BST
     }
 
 
-}
-        }
-    }
 }

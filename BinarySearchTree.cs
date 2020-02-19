@@ -197,6 +197,96 @@ namespace BST
             return GetLevel(this.root);
         }
 
+        public int Level(T data){
+            return 0;
+        }
+
+        public int GetItemLevel(T data, Node<T>  node){
+            
+            if(data is int){
+                if(Convert.ToInt32(data)== Convert.ToInt32(node.Value)){
+                    return 0;
+                }else if(Convert.ToInt32(data) < Convert.ToInt32(node.Value)){
+                    return GetItemLevel(data, node.Left) + 1;
+                }else{
+                    return GetItemLevel(data, node.Right) + 1;
+                }
+
+
+            }else{
+                Item item = data as Item;
+                Item nodeData = node.Value as Item;
+                if(item.ItemId == nodeData.ItemId){
+                    return 0;
+                }else if(item.ItemId < nodeData.ItemId){
+                    return GetItemLevel(data, node.Left) + 1;
+                }else{
+                    return GetItemLevel(data, node.Right) + 1;
+                }
+            }
+            
+        }   
+
+        public T Parent(T data){
+            return GetParentNode(data,root).Value;
+        }
+
+        public Node<T> GetParentNode(T data, Node<T> node ){
+            if(node == null || (node.Left == null && node.Right == null)){
+                return null;
+            }
+            if(data is int){
+                int intData = Convert.ToInt32(data);
+                int nodeData = Convert.ToInt32(node.Value);
+                if(node.Right != null){
+                    int rightData = Convert.ToInt32(node.Right.Value);
+                    if(rightData == intData){
+                        return node;
+                    }
+                    if(intData > nodeData){
+                        return GetParentNode(data, node.Right);
+                    }
+                    return null;
+                }
+                if(node.Left != null){
+                    int leftData = Convert.ToInt32(node.Left.Value);
+                    if(leftData == intData){
+                        return node;
+                    }
+                    if(intData < nodeData){
+                        return GetParentNode(data, node.Left);
+                    }
+                    return null;
+                }
+                return null;
+            }else{
+                Item intData = data as Item;
+                Item nodeData = node.Value as Item;
+                if(node.Right != null){
+                    Item rightData = node.Right.Value as Item;
+                    if(rightData == intData){
+                        return node;
+                    }
+                    if(intData.ItemId > nodeData.ItemId){
+                        return GetParentNode(data, node.Right);
+                    }
+                    return null;
+                }
+                if(node.Left != null){
+                    Item leftData =node.Left.Value as Item;
+                    if(leftData.ItemId == intData.ItemId){
+                        return node;
+                    }
+                    if(intData.ItemId < nodeData.ItemId){
+                        return GetParentNode(data, node.Left);
+                    }
+                    return null;
+                }
+                return null;
+            }
+        }
+
+
         private int GetLevel(Node<T> node){
             if(node == null){
                 return 0;
