@@ -250,7 +250,25 @@ namespace BST
                 }
             }
             else
-            {
+            {   
+                //has two children
+                //get max value in Left
+               Node<T> temp = node.Left;
+               
+
+               while(temp.Right != null)
+                {
+                    temp = temp.Right;
+                }   
+
+                Node<T> replaceParent = GetParentNode(node.Value, this.root);
+                replaceParent.Right = null;
+
+                node.Value = temp.Value;
+
+                if(node.Value is Item){
+                    node.Value = (T)Convert.ChangeType((node.Value as Item).Clone(),typeof(T));
+                }       
 
             }
         }
@@ -328,7 +346,6 @@ namespace BST
 
         public T Max()
         {
-
             return GetMostLeft(this.root).Value;
         }
 

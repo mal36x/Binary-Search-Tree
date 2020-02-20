@@ -63,7 +63,7 @@ namespace BST
                         break;
 
                     case "d":
-                        Console.WriteLine("Destructor()-- BSTree" + data + ">");
+                        Console.WriteLine("Destructor()-- BSTree <" + data + ">");
                         treeInt = null;
                         treeItem = null;
                         break;
